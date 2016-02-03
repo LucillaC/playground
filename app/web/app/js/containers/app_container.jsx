@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 // Constants
 import ActionTypes from 'action_types';
+import Categories from 'craigslist_constants'
 
 // Actions
 import AppActions from 'app_actions';
@@ -31,6 +32,7 @@ class AppContainer extends React.Component {
       <App
         {...app}
         searchCraigslist={::this._searchCraigslist}
+        categories = Categories
       />
     );
   }

@@ -5,6 +5,10 @@ class App extends React.Component {
     super(props);
   }
 
+  handleChange() {
+    this.props.searchCraigslist    
+  }
+
   render() {
     console.log('[app] this.props: ', this.props);
     return (
@@ -14,6 +18,11 @@ class App extends React.Component {
           placeholder='search craigslist'
           onChange={this.props.searchCraigslist}
         />
+        <select ref = {(node) => {return this.select = node}} onChange={this.handleChangeSort.bind(this)>
+          {this.props.categories.map((category, index) => {
+            return <option key={index} value={category}> {category} </option>
+          })}
+        </select>
       </div>
     );
   }
