@@ -6,7 +6,10 @@ class App extends React.Component {
   }
 
   handleChange() {
-    this.props.searchCraigslist    
+    this.props.searchCraigslist({
+      search: this.input.value,
+      category: this.select.value
+    })  
   }
 
   render() {
@@ -14,14 +17,15 @@ class App extends React.Component {
     return (
       <div className='app'>
         <Input
+          ref = {(node) => {return this.input = node}}
           type='text'
           placeholder='search craigslist'
-          onChange={this.props.searchCraigslist}
+          onChange={this.handleChange.bind(this)}
         />
-        <select ref = {(node) => {return this.select = node}} onChange={this.handleChangeSort.bind(this)>
-          {this.props.categories.map((category, index) => {
-            return <option key={index} value={category}> {category} </option>
-          })}
+        <select ref = {(node) => {return this.select = node}} onChange={this.handleChange.bind(this)}>
+          {_.map(this.props.categories, ((category, index) => {
+            return (<option key={index} value={category}> {category} </option>)
+          }))}
         </select>
       </div>
     );

@@ -16,13 +16,18 @@ class AppContainer extends React.Component {
     super();
   }
 
-  _searchCraigslist(e) {
+  // _searchCraigslist(e) {
+  //   const val = e.target.value;
+  //   searchCraigslist(val);
+  // }
+
+  _searchCraigslist(obj) {
     const {searchCraigslist} = bindActionCreators(AppActions, this.props.dispatch);
-    const val = e.target.value;
-    searchCraigslist(val);
+    searchCraigslist(obj);
   }
 
   render() {
+    console.log('$$$', Categories);
     const {
       dispatch,
       app,
@@ -32,7 +37,7 @@ class AppContainer extends React.Component {
       <App
         {...app}
         searchCraigslist={::this._searchCraigslist}
-        categories = Categories
+        categories = {Categories.CATEGORIES}
       />
     );
   }

@@ -8,7 +8,8 @@ module.exports = {
     return (query) => {
       return new Promise((resolve, reject) => {      
         let queryObj = {
-          search: query
+          search: query.search,
+          category: query.category
         };
         if (timeout) {
           clearTimeout(timeout)
